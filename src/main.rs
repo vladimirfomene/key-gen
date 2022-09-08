@@ -50,8 +50,7 @@ fn main() -> Result<(), Box<dyn Error>> {
 
     if let Secret(desc_seckey, _, _) = derived_xprv_desc_key {
         let desc_pubkey = desc_seckey
-            .as_public(&secp)?;
-            //.map_err(|e| BDK_ERROR::Generic(e.to_string()))?;
+            .as_public(&secp).map_err(|e| BDK_ERROR::Generic(e.to_string()))?;
         println!("xpub {}", desc_pubkey.to_string());
         println!("xprv {}", desc_seckey.to_string());
     } else {
